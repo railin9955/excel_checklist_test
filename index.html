@@ -1,6 +1,17 @@
-npm install
-npm install exceljs localforage lucide-react
-npm install gh-pages --save-dev
+npm install gh-pages
+{
+  "homepage": "https://{username}.github.io/{project-name}",
+  ...
+  ...
+  ...
+  "scripts": {
+    ...
+    ...
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
+  }
+}
+
 
 npm run deploy
 

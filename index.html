@@ -1,7 +1,8 @@
+npm install
+npm install exceljs localforage lucide-react
+npm install gh-pages --save-dev
 
-
-# 1. 로컬 저장소 유틸리티 (src/utils/storage.js)
-# 브라우저 내장 DB를 활용하여 서버 전송 없이 작업 내역을 안전하게 임시 보관합니다.
+npm run deploy
 
 import localforage from 'localforage';
 
@@ -37,9 +38,6 @@ export const clearWorkspace = async () => {
   await localforage.clear();
 };
 
-# 2. 엑셀 파서 및 트리 데이터 변환 (src/utils/excelParser.js)
-# 엑셀 데이터를 읽어 체크리스트용 배열과 사이드바용 트리 구조로 분리합니다.
-
 import ExcelJS from 'exceljs';
 
 export const parseExcelFile = async (arrayBuffer) => {
@@ -73,8 +71,6 @@ export const parseExcelFile = async (arrayBuffer) => {
   return { workbook, parsedTasks, departmentTree };
 };
 
-# 3. 서식 유지 엑셀 내보내기 (src/utils/exportExcel.js)
-# 원본 파일의 서식을 100% 유지한 채 체크된 결과만 덮어쓰기 하여 다운로드합니다.
 export const exportToExcel = async (workbook, tasks, originalFileName) => {
   try {
     const worksheet = workbook.worksheets[0];
@@ -101,8 +97,6 @@ export const exportToExcel = async (workbook, tasks, originalFileName) => {
   }
 };
 
-# 4. 통합 메인 UI 컴포넌트 (src/App.jsx)
-# 모든 상태 관리, 자동 복구 흐름, UI 레이아웃, 실시간 검색 및 진행률 계산이 포함된 최종 메인 앱입니다.
 
 import { useState, useEffect, useMemo } from 'react';
 import { parseExcelFile } from './utils/excelParser';

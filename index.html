@@ -1,35 +1,4 @@
-# 1. gh-pages 패키지 설치
-# 터미널(명령 프롬프트)을 열고 프로젝트 폴더 경로에서 아래 명령어를 입력해 패키지를 설치합니다.
 
-# Bash
-npm install gh-pages --save-dev
-
-# 2. package.json 파일 수정
-# 프로젝트 폴더에 있는 package.json 파일을 열고, "scripts" 부분에 predeploy와 deploy 두 줄을 추가합니다.
-
-"scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
-
-# 3. vite.config.js 설정 확인
-# 이전에 안내해 드린 대로 base 경로가 정확히 들어갔는지 다시 한번 확인하고 저장합니다.
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-export default defineConfig({
-  plugins: [react()],
-  base: '/excel_checklist_test/',
-})
-
-# 4. 자동 빌드 및 배포 실행
-# 터미널에 아래 명령어를 입력합니다.
-
-npm run deploy
 
 # 1. 로컬 저장소 유틸리티 (src/utils/storage.js)
 # 브라우저 내장 DB를 활용하여 서버 전송 없이 작업 내역을 안전하게 임시 보관합니다.
